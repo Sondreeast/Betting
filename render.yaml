@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: worldcup-ai-betting
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      # Optional — only needed for the live bookmaker-odds overlay on 1X2 picks.
+      # Add your own key from https://the-odds-api.com in the Render dashboard instead
+      # of committing it here.
+      # - key: ODDS_API_KEY
+      #   sync: false
